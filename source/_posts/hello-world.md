@@ -1,38 +1,18 @@
 ---
-title: Hello World
+title: Hello world!
+cover: /img/头像B站.jpg
+thumbnail: /img/头像B站.jpg
+updated: 2023-07-21 19:59:00
+categories: 杂谈
 ---
-Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).
 
-## Quick Start
+花了数个小时，终于建立起了**专属于我的个人网站**。
 
-### Create a new post
 
-``` bash
-$ hexo new "My New Post"
-```
+先是下载了一个名为 *Node.js* 的东西，接着用其包管理器 *npm* 下载了 *hexo*，然后又是一系列包的安装……第二天才开始着手主题的配置，一个名为 *icarus* 的主题最终被我选中，又是一系列的配置……
 
-More info: [Writing](https://hexo.io/docs/writing.html)
 
-### Run server
+*hexo* 的部署过程令我迷惑，它替我完成了 *git* 的推送，但是我的分支管理好像出了亿点问题。到现在本地还有4000+个挂起的更改，然而`hexo d`命令依然能推送更改，并且 *github pages* 的显示效果与本地预览一模一样。以往习惯的add、commit和push工作流现在却换为了这样一套模式：`hexo g`，`hexo s`，`hexo clean`和`hexo d`，好在很快便适应了。
 
-``` bash
-$ hexo server
-```
 
-More info: [Server](https://hexo.io/docs/server.html)
-
-### Generate static files
-
-``` bash
-$ hexo generate
-```
-
-More info: [Generating](https://hexo.io/docs/generating.html)
-
-### Deploy to remote sites
-
-``` bash
-$ hexo deploy
-```
-
-More info: [Deployment](https://hexo.io/docs/one-command-deployment.html)
+**不过，以后应该写点啥呢？**
