@@ -3,11 +3,11 @@ title: Hello world!
 cover: /img/头像B站.jpg
 thumbnail: /img/头像B站.jpg
 updated: 2023-07-23 14:30:00
-categories: 碎碎念
+categories: 啥都写
 ---
 
 花了数个小时，终于建立起了**专属于我的个人网站**。
-
+<!-- more -->
 
 先是下载了一个名为 *Node.js* 的东西，接着用其包管理器 *npm* 下载了 *hexo*，然后又是一系列包的安装……第二天才开始着手主题的配置，一个名为 *icarus* 的主题最终被我选中，又是一系列的配置……
 
