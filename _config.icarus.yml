@@ -108,10 +108,14 @@ navbar:
     menu:
         # 多余了
         # Home: /
-        Archives: /archives
-        Categories: /categories
-        Tags: /tags
-        About: /about
+        # Archives: /archives
+        时间轴: /archives
+        # Categories: /categories
+        分类: /categories
+        # Tags: /tags
+        标签: /tags
+        # About: /about
+        关于: /about
     # Links to be shown on the right of the navigation bar
     # github 链接太多了，这里不必添加
     # links:
@@ -271,7 +275,7 @@ widgets:
     # Table of contents widget configurations
     -
         # Where should the widget be placed, left sidebar or right sidebar
-        position: left
+        position: right
         type: toc
         # Whether to show the index of each heading
         index: true
@@ -296,7 +300,7 @@ widgets:
     # Recent posts widget configurations
     -
         # Where should the widget be placed, left sidebar or right sidebar
-        position: left
+        position: right
         type: recent_posts
     # Archives widget configurations
     -
