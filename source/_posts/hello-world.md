@@ -3,7 +3,7 @@ title: Hello world!
 cover: /img/头像B站.jpg
 thumbnail: /img/头像B站.jpg
 updated: 2023-07-23 14:30:00
-categories: 啥都写
+categories: 建站历程
 ---
 
 花了数个小时，终于建立起了**专属于我的个人网站**。
