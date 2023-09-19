@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>docker配置csapp环境 - HollowGL的个人空间</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="HollowGL的个人空间"><meta name="msapplication-TileImage" content="/img/hk.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="HollowGL的个人空间"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="用比较抽象的语言描述了如何使用docker在mac上配置csapp实验环境"><meta property="og:type" content="blog"><meta property="og:title" content="docker配置csapp环境"><meta property="og:url" content="https://hollowgl.github.io/2023/09/19/csapp-env/"><meta property="og:site_name" content="HollowGL的个人空间"><meta property="og:description" content="用比较抽象的语言描述了如何使用docker在mac上配置csapp实验环境"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://hollowgl.github.io/img/og_image.png"><meta property="article:published_time" content="2023-09-19T13:33:47.000Z"><meta property="article:modified_time" content="2023-09-19T13:33:47.000Z"><meta property="article:author" content="HollowGL"><meta property="article:tag" content="C"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://hollowgl.github.io/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://hollowgl.github.io/2023/09/19/csapp-env/"},"headline":"docker配置csapp环境","image":["https://hollowgl.github.io/img/og_image.png"],"datePublished":"2023-09-19T13:33:47.000Z","dateModified":"2023-09-19T13:33:47.000Z","author":{"@type":"Person","name":"HollowGL"},"publisher":{"@type":"Organization","name":"HollowGL的个人空间","logo":{"@type":"ImageObject","url":{"text":"HollowGL"}}},"description":"用比较抽象的语言描述了如何使用docker在mac上配置csapp实验环境"}</script><link rel="canonical" href="https://hollowgl.github.io/2023/09/19/csapp-env/"><link rel="icon" href="/img/hk.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">HollowGL</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/archives">时间轴</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-09-19T13:33:47.000Z" title="2023/9/19 21:33:47">2023-09-19</time>发表</span><span class="level-item"><time dateTime="2023-09-19T13:33:47.000Z" title="2023/9/19 21:33:47">2023-09-19</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/csapp/">csapp</a></span><span class="level-item">10 分钟读完 (大约1471个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">docker配置csapp环境</h1><div class="content"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>仰慕CSAPP之名久矣，于上学期向图书馆借阅数周，阅之心情舒畅，甚为过瘾，不负盛誉也。然及暑假，嫌其书重，未能携归，忽感空虚万分，孤寂难堪。后新学期至，即以重金购得。</p>
+<p>纸上得来终觉浅薄，觉知精髓在于实践。数日前始配置实验环境，然其过程艰难，折磨数日，迨至今日，终得成功。念及同经配环境之苦者，遂以此文以记之。</p>
+<p>！！！以下内容只是简单记录，不对任何读者负责</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>CSAPP的实验的部分步骤需要在Linux系统上运行，网上有使用docker配好的镜像，但我尝试运行却遇到很多问题。恰好之前稍微学了点docker，于是干脆自行配置环境。重点参考了网上<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/339047608">这一教程</a>。</p>
+<p>本地计算机的环境是 <code>MacBook Air (M1, 2020)</code>配置、 <code>macOS Ventura</code>系统，使用 <code>iTerm2</code>终端，以下配置过程均在此运行。我还有一台 Win10 系统电脑，后续可能会按此过程重新配置一遍已验证其跨平台性。</p>
+<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><p><strong>下载 Docker Desktop 并换源</strong>，在设置-docker引擎中将 <code>registry-mirrors</code> 换成以下内容并重启docker：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;registry-mirrors&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;https://docker.mirrors.ustc.edu.cn/&quot;</span></span><br><span class="line">  <span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>我一开始看到这是json格式，以为可以添加多个源，但是后来发现这样做反而没法正常运行，会在 <code>docker build</code> 时遇到EOF的报错。不过我现在仍然没有找到出现问题的具体原因，按理说配置多个源应该是被允许的。</p>
+</blockquote>
+<p><strong>拉取镜像</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull ubuntu:22.04</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>编写Dockerfile</strong></p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> --platform=linux/amd64 ubuntu:<span class="number">22.04</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果不使用 <code>--platform=linux/amd64</code> 参数，那么后续在运行二进制文件时会报错 <code>qemu-x86_64: Could not open &#39;/lib64/ld-linux-x86-64.so.2&#39;: No such file or directory</code> 。我是在<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/71040681/qemu-x86-64-could-not-open-lib64-ld-linux-x86-64-so-2-no-such-file-or-direc">stackoverflow</a>找到了这一解决方案，这也是我为什么要自行编写Dockerfile而不是直接使用官方ubuntu镜像的原因。</p>
+</blockquote>
+<p><strong>生成镜像</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t myubuntu .</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p><strong>建立目录挂载</strong>实现文件同步，<code>~/Desktop/CSAPP-Labs</code> 是我保存Lab文件的本地位置，挂载后两边的文件将完全同步。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it -v ~/Desktop/CSAPP-Labs:/csapp --name=csapp_env myubuntu /bin/bash</span><br></pre></td></tr></table></figure>
+<p>执行该命令后终端就进入ubuntu系统，可直接运行相关命令</p>
+<p><strong>备份并换apt源</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> /etc/apt/sources.list /etc/apt/sources.list.bak</span><br></pre></td></tr></table></figure>
+
+<p>接着apt换<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/">清华源</a></p>
+<ul>
+<li><p>我使用的是m1芯片的mac，但使用<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu-ports/">ubuntu-ports镜像</a>却无效，使用普通镜像即可</p>
+</li>
+<li><p>所有选项都选<strong>否</strong>，Ubuntu版本选<strong>22.04 LTS</strong></p>
+</li>
+</ul>
+<p>以上选项经过我多次尝试，具体内容如下：</p>
+<figure class="highlight bash"><figcaption><span>内容较长，点击展开 >folded</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释</span></span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse</span></span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse</span></span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse</span></span><br><span class="line"></span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverse</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># deb http://security.ubuntu.com/ubuntu/ jammy-security main restricted universe multiverse</span></span><br><span class="line"><span class="comment"># # deb-src http://security.ubuntu.com/ubuntu/ jammy-security main restricted universe multiverse</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 预发布软件源，不建议启用</span></span><br><span class="line"><span class="comment"># deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse</span></span><br><span class="line"><span class="comment"># # deb-src http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse</span></span><br></pre></td></tr></table></figure>
+
+<p>该ubuntu系统中没有文本编辑器（apt 没换源升级之前又没法 <code>apt install vim</code> ），我找到了两种方法来更改 <code>/etc/apt/sources.list</code></p>
+<ul>
+<li>使用本地计算机新建一个文件写入上述文本，将其放入挂载目录 <code>~/Desktop/CSAPP-Labs</code> ，那么它将出现在ubuntu系统的 <code>csapp</code> 文件中，接下来 <code>cp /csapp/sources.list /etc/apt/sources.list</code></li>
+<li>可以通过Docker Desktop直接进行编辑，找到容器进入Files直接去对应目录编辑即可</li>
+</ul>
+<p>换源后需更新，并重新升级apt</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/apt/source.list</span><br><span class="line">apt update</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>安装编译工具链</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install build-essential</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>验证安装：<code>gcc --version</code><br>要不是没有编辑器，不然必须给它运行个 <code>Hello World!</code></p>
+</blockquote>
+<p>此时还缺少一些文件，虽然能正常运行 <code>./dlc bits.c</code> ，但是会在 <code>make btest</code> 时报错 <code>fatal error: bits/libc-header-start.h: No such file or directory</code> </p>
+<blockquote>
+<p>运行dlc可能会被报错缺少权限，需 <code>chmod u+x ./dlc</code></p>
+</blockquote>
+<p>还需下载以下工具</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install gcc-multilib</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>我依然是在<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/54082459/fatal-error-bits-libc-header-start-h-no-such-file-or-directory-while-compili">stackoverflow</a>找到的解决方案<br>原因好像是缺少32位系统的头文件和库文件</p>
+</blockquote>
+<p>最终，make命令成功运行，编译出btest二进制文件，可以直接运行</p>
+<p><strong>退出容器</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exit</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>下次启动容器</strong><br>需要先打开docker</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker start csapp_env</span><br><span class="line">docker <span class="built_in">exec</span> -it csapp_env /bin/bash</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
+<li>Docker运行的ubuntu好像直接拥有管理员权限，所有命令直接运行即可，不加 <code>sudo</code></li>
+<li>在iterm2终端执行ubuntu命令时，直接 <code>clear</code> 就被警告，需使用快捷键 <code>control</code> + <code>L</code> </li>
+<li>查看系统版本：<code>cat /etc/os-release</code></li>
+<li>有时候退出容器，容器并不会自动停止，需使用命令 <code>docker stop </code></li>
+</ol>
+</div><div class="article-licensing box"><div class="licensing-title"><p>docker配置csapp环境</p><p><a href="https://hollowgl.github.io/2023/09/19/csapp-env/">https://hollowgl.github.io/2023/09/19/csapp-env/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>HollowGL</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2023-09-19</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2023-09-19</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/C/">C</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2023/09/12/rebuild-blog/"><span class="level-item">博客的迁移</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="/img/hk.svg" alt="HollowGL"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">HollowGL</p><p class="is-size-6 is-block">喜欢折腾的大学生</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>德特茅斯-圣巢</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">4</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">3</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">3</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/HollowGL" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/HollowGL"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Bilibili" href="https://space.bilibili.com/413042585"><i class="fab fa-bilibili"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Email" href="mailto:2363613192@qq.com"><i class="far fa-envelope"></i></a></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/csapp/"><span class="level-start"><span class="level-item">csapp</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%BB%BA%E7%AB%99%E5%8E%86%E7%A8%8B/"><span class="level-start"><span class="level-item">建站历程</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/%E7%AC%94%E8%AE%B0/"><span class="level-start"><span class="level-item">笔记</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2023/09/"><span class="level-start"><span class="level-item">九月 2023</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/08/"><span class="level-start"><span class="level-item">八月 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/07/"><span class="level-start"><span class="level-item">七月 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/C/"><span class="tag">C</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Pyhton/"><span class="tag">Pyhton</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Selenium/"><span class="tag">Selenium</span><span class="tag">1</span></a></div></div></div></div></div><div class="column-right-shadow is-hidden-widescreen"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3"><!--!--><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-09-19T13:33:47.000Z">2023-09-19</time></p><p class="title"><a href="/2023/09/19/csapp-env/">docker配置csapp环境</a></p><p class="categories"><a href="/categories/csapp/">csapp</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-09-12T10:56:37.000Z">2023-09-12</time></p><p class="title"><a href="/2023/09/12/rebuild-blog/">博客的迁移</a></p><p class="categories"><a href="/categories/%E5%BB%BA%E7%AB%99%E5%8E%86%E7%A8%8B/">建站历程</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-08-09T10:48:13.000Z">2023-08-09</time></p><p class="title"><a href="/2023/08/09/selenium%E7%AC%94%E8%AE%B0/">selenium笔记</a></p><p class="categories"><a href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/2023/07/20/hello-world/"><img src="/img/%E5%A4%B4%E5%83%8FB%E7%AB%99.jpg" alt="Hello world!"></a></figure><div class="media-content"><p class="date"><time dateTime="2023-07-20T15:34:56.578Z">2023-07-20</time></p><p class="title"><a href="/2023/07/20/hello-world/">Hello world!</a></p><p class="categories"><a href="/categories/%E5%BB%BA%E7%AB%99%E5%8E%86%E7%A8%8B/">建站历程</a></p></div></article></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">HollowGL</a><p class="is-size-7"><span>&copy; 2023 HollowGL</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">用💖发电</p></div><div class="level-end"></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
