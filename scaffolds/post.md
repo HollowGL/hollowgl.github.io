@@ -6,4 +6,5 @@ thumbnail:
 updated: {{ date }}
 categories:
 tags:
+excerpt:
 ---
