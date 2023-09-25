@@ -1,6 +1,7 @@
 ---
 title: {{ title }}
 date: {{ date }}
+toc: false
 cover: 
 thumbnail: 
 updated: {{ date }}
