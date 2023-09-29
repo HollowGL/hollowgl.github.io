@@ -5,3 +5,7 @@ node_modules
 .deploy_git
 public
 db.json
+
+# new feat
+/source/js
+/source/self_talking
