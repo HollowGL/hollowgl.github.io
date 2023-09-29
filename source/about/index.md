@@ -6,17 +6,25 @@ article:
     licenses:
 ---
 
+{% raw %}
+<style type="text/css">
+    .heimu { color: #888f96; background-color: #888f96; }
+    .heimu:hover { color: #fff; }
+</style>
+{% endraw %}
+
+
 ### 个人简介
 
 某技术学院传统工科本科生，不学无术，在编程中寻找到一些价值。
 
-**HollowGL**，取自我喜欢的一款简单的独立游戏《Hollow Knight》，那 GL 呢？也许是26个字母中取两个的随机组合吧 : )
+**HollowGL**，取自我喜欢的一款简单的独立游戏《Hollow Knight》，那 GL 呢？也许是26个字母中取两个的随机组合吧 : ){% raw %}<span class="heimu">好吧，其实是名字首字母</span>{% endraw %}
 
 
 ### 博客信息
 目前博客挂载到 Github Pages 上，基本上也就我一个人在看，一些文章的表述可能很难理解~~（本来我的文字功底就很弱）~~。
 
-博客文件开源，源码放在远端[main分支](https://github.com/HollowGL/hollowgl.github.io/tree/main)，`hexo d` 则推送到gh-pages分支
+博客文件开源，源码放在远端[main分支](https://github.com/HollowGL/hollowgl.github.io/tree/main)，hexo生成文件则推送到gh-pages分支
 
 ***更新日志*** 
 具体细节见文章分类[建站历程](http://localhost:4000/categories/%E5%BB%BA%E7%AB%99%E5%8E%86%E7%A8%8B/)
