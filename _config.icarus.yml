@@ -116,6 +116,7 @@ navbar:
         标签: /tags
         # About: /about
         关于: /about
+        # 碎碎念: /self_talking
     # Links to be shown on the right of the navigation bar
     # github 链接太多了，这里不必添加
     # links:
