@@ -116,7 +116,7 @@ navbar:
         标签: /tags
         # About: /about
         关于: /about
-        # 碎碎念: /self_talking
+        碎碎念: /self_talking
     # Links to be shown on the right of the navigation bar
     # github 链接太多了，这里不必添加
     # links:
@@ -178,6 +178,19 @@ search:
 #     shortname: ''
 # Donate plugin configurations
 # https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/Donation/
+
+# 暂时没有必要开放评论
+# comment:
+#     type: gitalk
+#     language: zh-CN #zh-CN #Localization language key, en, zh-CN and zh-TW are currently available.
+#     owner: hollowgl         # (required) GitHub user name
+#     repo: hollowgl.github.io          # (required) GitHub repository name
+#     client_id: dae8c0049c7911dd0ba5     # (required) OAuth application client id
+#     client_secret: 74886ab9d902dd7e8ffd560862db00676a34d2c4 # (required) OAuth application client secret
+#     admin: ['hollowgl']
+#     create_issue_manually: true
+#     distraction_free_mode: false
+
 # donates:
 #     # "Afdian.net" donate button configurations
 #     -
