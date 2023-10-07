@@ -7,7 +7,9 @@ article:
 comment: false
 ---
 
-<div class = "text-center"><h1>碎碎念</h1></div><div class = "text-tips">
+<div class = "text-center"><h1>纸条</h1></div><div class = "text-tips">
+
+可能装进漂流瓶，没入赛博空间；也可能封入时间胶囊，待以后翻看。
 
 <!-- 方案四 -->
 <!-- tips：github登录后按时间正序查看、可点赞加❤️、本插件[地址](https://github.com/removeif/gitalk)..<span id="busuanzi_container_page_pv">「<span id="busuanzi_value_page_pv">+99</span>次查看」</span></div>
@@ -52,6 +54,7 @@ comment: false
 
 <!-- 方案二，抄自[开源代码](https://raw.githubusercontent.com/removeif/hexo-theme-amazing/master/ex_pages/source/self-talking/index.md) -->
 <!-- js代码试过各个版本的，最终效果都一样 -->
+<p>tips：github登录后按时间正序查看、可点赞加❤️</a>..<span id="busuanzi_container_page_pv">「<span id="busuanzi_value_page_pv">+99</span>次查看」</span></div></p>
 <script src="/js/gitalk_self.min.js"></script>
 <!-- <link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/gitalk/1.6.0/gitalk.css"> -->
 <link rel="stylesheet" href="/css/self_talking.css">
