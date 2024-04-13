@@ -54,17 +54,17 @@ comment: false
 
 <!-- 方案二，抄自[开源代码](https://raw.githubusercontent.com/removeif/hexo-theme-amazing/master/ex_pages/source/self-talking/index.md) -->
 <!-- js代码试过各个版本的，最终效果都一样 -->
-<p>tips：github登录后按时间正序查看、可点赞加❤️</a>..<span id="busuanzi_container_page_pv">「<span id="busuanzi_value_page_pv">+99</span>次查看」</span></div></p>
+<p>tips：github登录后按时间正序查看、可点赞加❤️</p>
 <script src="/js/gitalk_self.min.js"></script>
 <!-- <link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/gitalk/1.6.0/gitalk.css"> -->
 <link rel="stylesheet" href="/css/self_talking.css">
-<div id="comment-container1"><div class="text-tips">碎碎念加载中，请稍等...</div></div>
+<div id="comment-container1"><div class="text-tips">加载中，请稍等...</div></div>
 <script>
     var gitalk = new Gitalk({
-        clientID: 'dae8c0049c7911dd0ba5',
-        clientSecret: '74886ab9d902dd7e8ffd560862db00676a34d2c4',
-        id: 'test',
-        repo: 'hollowgl.github.io',
+        clientID: 'cbb524ec5249c1425700',
+        clientSecret: '8f8117a73eabe2f1fbf053d253931b0c65cbc2e1',
+        id: 'letter',
+        repo: 'blog_comment',
         owner: 'hollowgl',
         admin: "hollowgl",
         createIssueManually: true,
