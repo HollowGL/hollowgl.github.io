@@ -1,0 +1,85 @@
+# Please be noted that a sidebar is only visible when it has at least one widget
+sidebar:
+    # Left sidebar configurations
+    left:
+        # Whether the sidebar sticks to the top when page scrolls
+        sticky: true
+    # Right sidebar configurations
+    right:
+        # Whether the sidebar sticks to the top when page scrolls
+        sticky: false
+# Sidebar widget configurations
+# http://ppoffice.github.io/hexo-theme-icarus/categories/Widgets/
+widgets:
+    # Profile widget configurations
+
+    -
+
+        # 精简部分内容
+        # Where should the widget be placed, left sidebar or right sidebar
+        position: left
+        type: profile
+        # Author name
+        author: HollowGL
+        # # Author title
+        # author_title: 喜欢折腾的大学生
+        # # Author's current location
+        # location: 德特茅斯-圣巢
+        # URL or path to the avatar image
+        avatar: /img/hk.svg
+        # Whether show the rounded avatar image
+        avatar_rounded: true
+        # Email address for the Gravatar
+        gravatar: 
+        # URL or path for the follow button
+        follow_link: https://github.com/HollowGL
+        # Links to be shown on the bottom of the profile widget
+        # social_links:
+        #     Github:
+        #         icon: fab fa-github
+        #         url: https://github.com/HollowGL
+        #     Bilibili:
+        #         icon: fab fa-bilibili
+        #         url: https://space.bilibili.com/413042585
+        #     Email:
+        #         icon: far fa-envelope
+        #         url: mailto:2363613192@qq.com
+
+    # Table of contents widget configurations
+    -
+        # Where should the widget be placed, left sidebar or right sidebar
+        position: left
+        type: toc
+        # Whether to show the index of each heading
+        index: true
+        # Whether to collapse sub-headings when they are out-of-view
+        collapsed: true
+        # Maximum level of headings to show (1-6)
+        depth: 3
+    # Categories widget configurations
+    -
+        # Where should the widget be placed, left sidebar or right sidebar
+        position: left
+        type: categories
+    # Recent posts widget configurations
+    # 取消最近文章显示
+    # -
+    #     # Where should the widget be placed, left sidebar or right sidebar
+    #     position: 
+    #     type: recent_posts
+    # Archives widget configurations
+    -
+        # Where should the widget be placed, left sidebar or right sidebar
+        position: left
+        type: archives
+    # Tags widget configurations
+    -
+        # Where should the widget be placed, left sidebar or right sidebar
+        position: left
+        type: tags
+        # How to order tags. For example 'name' to order by name in ascending order, and '-length' to order by number of posts in each tags in descending order
+        order_by: name
+        # Amount of tags to show. Will show all if not set.
+        amount: 
+        # Whether to show tags count, i.e. number of posts in the tag.
+        show_count: true

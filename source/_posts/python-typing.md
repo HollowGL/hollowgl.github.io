@@ -38,8 +38,6 @@ Found 1 error in 1 file (checked 1 source file)
 ```
 
 
-
-
 ## typing的变化
 
 typing的类型注释有很多种，比如`List`、`Dict`、`Tuple`、`Union`、`Optional`等等，这些类型注释可以组合使用，形成更复杂的类型注释。但是这些类型需要从typing模块导入：
@@ -51,7 +49,7 @@ def foo(a: int) -> Tuple[int]:
     return (a,)
 ```
 
-注意这里的Tuple的T是大写的，而在Python3.9以后，可以直接使用内置的`tuple`、`list`、`dict`等类型，不需要导入typing模块（但是依然支持从typing导入）。
+注意这里的Tuple的T是大写的，而在Python3.9以后，可以直接使用内置的`tuple`、`list`、`dict`等类型，不需要导入typing模块（从typing导入也没问题）。
 
 ```python
 def foo(a: int) -> tuple[int]:
@@ -74,4 +72,4 @@ def foo(a: int) -> tuple[str]:
     return str(a),
 ```
 
-不过这种方式可能用得少，毕竟`Union`、`Optional`、`Callable`等类型还是需要从typing导入的，以上只是typing的冰山一角。
+不过这种方式可能用得少，毕竟`Union`、`Optional`、`Callable`等类型还是需要从typing导入的。

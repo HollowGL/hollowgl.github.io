@@ -27,7 +27,7 @@ hexo new page self_talking
 ```
 
 此时source文件下新增一名为self_talking的目录，其下新增名为index.md的文件。随后还需在_config.icarus.yml文件中新增碎碎念词条：
-```yml
+```diff yml
 navbar:
     # Navigation menu items
     menu:
@@ -35,7 +35,7 @@ navbar:
         分类: /categories
         标签: /tags
         关于: /about
-        碎碎念: /self_talking
++       碎碎念: /self_talking
 ```
 此时使用 `hexo g && hexo s` 预览就能看到导航栏上的“碎碎念”了，不过点击后页面还没有任何内容。
 

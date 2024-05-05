@@ -115,8 +115,9 @@ navbar:
         # Tags: /tags
         标签: /tags
         # About: /about
-        关于: /about
+        友链: /friends
         纸条: /self_talking
+        关于: /about
     # Links to be shown on the right of the navigation bar
     # github 链接太多了，这里不必添加
     # links:
@@ -416,9 +417,12 @@ plugins:
     # Enable the KaTeX math typesetting support
     # https://katex.org/
     katex: false
+
     # Enable the MathJax math typesetting support
     # https://www.mathjax.org/
-    mathjax: false
+    # 支持Latex数学公式
+    mathjax: true
+    
     # Enable the Outdated Browser plugin
     # http://outdatedbrowser.com/
     outdated_browser: false
