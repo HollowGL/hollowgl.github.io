@@ -7,7 +7,7 @@ updated: 2024-04-14 00:00:38
 cover:
 thumbnail:
 categories:
-tags:
+tags: Python
 ---
 
 

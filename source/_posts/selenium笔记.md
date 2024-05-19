@@ -7,7 +7,7 @@ cover:
 thumbnail:
 categories: 笔记
 tags: 
-    - Pyhton
+    - Python
     - Selenium
 ---
 
