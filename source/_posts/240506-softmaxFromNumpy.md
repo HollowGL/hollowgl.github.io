@@ -2,7 +2,7 @@
 title: numpy实现softmax回归
 toc: true
 date: 2024-05-06 22:20:05
-updated: 2024-05-06 22:20:05
+updated: 2024-05-19 17:15:00
 cover:
 thumbnail:
 categories:
@@ -18,7 +18,7 @@ tags: Python
 也就单层神经网络可以手动计算梯度，多层神经网络不得不借助自动微分工具。如若用上Pytorch等高级框架的话，整个模型几行代码就可实现。
 
 参考链接
-- [Softmax回归](https://zh-v2.d2l.ai/chapter_linear-networks/softmax-regression.html)
+- [动手学深度学习：3.4. Softmax回归](https://zh-v2.d2l.ai/chapter_linear-networks/softmax-regression.html)
 - [一文搞懂极大似然估计](https://zhuanlan.zhihu.com/p/26614750)
 
 
@@ -97,6 +97,7 @@ def batch_gradient_descent(
 - 随机选取95%的数据作训练集，剩余5%作测试集
 - 特征向量中每个元素取值为-128到127，将其归一化到0-1
 - 标签为0-9的整数，将其转化为独热编码
+
 ```python
 mnist_data = pd.read_csv(r'your\path\to\train.csv')
 
@@ -169,7 +170,7 @@ train_y = np.eye(10)[train_y]
 $$
 o = x W + b
 $$
-其中 $W \in \mathbb{R}^{q\times d}$ 为权重，$b \in \mathbb{R}^q$ 为偏置，$o \in \mathbb{R}^q$ 为该层网络的输出。
+其中 $W \in \mathbb{R}^{d\times q}$ 为权重，$b \in \mathbb{R}^q$ 为偏置，$o \in \mathbb{R}^q$ 为该层网络的输出。
 
 
 softmax函数将 $o$ 转化为概率分布：
@@ -310,4 +311,5 @@ for _ in range(epochs):
         loss_epoch += loss(y_batch, y_hat)
     loss_lst.append(loss_epoch / batch_size)
 ```
-其中有三个超参数需要调整：学习率 `learning_rate`、迭代次数 `epochs` 和批量大小 `batch_size`。
+其中有三个超参数可以调整：学习率 `learning_rate`、迭代次数 `epochs` 和批量大小 `batch_size`。
+有形状分别为 `(784, 10)` 和 `(10,)` 的可学习参数 $W$ 和 $b$，所以这是一个拥有 $0.00000785 B$ 参数的“大”模型。
