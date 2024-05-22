@@ -102,9 +102,13 @@ js代码对没有头像的博客进行了处理，使用了默认头像。如果
 
 
 ## CSS
-js代码中出现名为`friend-title-item`和`friend-card-item`的类，都不是原主题中的类。通过搜索，我发现需要在`themes\icarus\source\css\default.styl`中实现，需添加（摘自[此处](https://github.com/removeif/hexo-theme-icarus-removeif/blob/97d700c97fb3226c1a55d6f38785dc6e83322a13/themes/icarus/source/css/base.styl#L887)）：
+js代码中出现名为`friend-title-item`和`friend-card-item`的类，都不是原主题中的类。因此需要添加与之对应的CSS样式，我找到两种方法：
 
-```css >folded
+### 方法一
+
+通过搜索，我发现原博主在`themes\icarus\source\css\default.styl`中实现，需添加以下代码（摘自[此处](https://github.com/removeif/hexo-theme-icarus-removeif/blob/97d700c97fb3226c1a55d6f38785dc6e83322a13/themes/icarus/source/css/base.styl#L887)）：
+
+```css >folded 点击展开
 .friend-title-item {
     font-weight: bold;
     text-align: center;
@@ -150,5 +154,17 @@ js代码中出现名为`friend-title-item`和`friend-card-item`的类，都不�
     }
 }
 ```
+
+
+### 方法二
+
+第一种方式修改了原主题的样式，回想[**纸条**](https://hollowgl.github.io/2023/10/07/self-talking/)页面的实现，可以将样式写在`source/css/friends.css`文件中，使其与主题解耦。这种方法应该适用于所有使用`Hexo`框架搭建的博客。
+还需要在`friends`页面的md文件添加一行，引入`friends.css`文件：
+```diff
++ <link rel="stylesheet" type="text/css" href="/css/friends.css">
+<script type="text/javascript" defer src="/js/friends.js"></script>
+<div class="links-content">加载中，稍等几秒...</div>
+```
+
 
 至此，大功告成！
