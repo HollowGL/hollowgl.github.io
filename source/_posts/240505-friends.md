@@ -46,7 +46,7 @@ navbar:
 ```
 
 ## js
-在`source/js`目录下新建`friends.js`文件，内容如下（较[原代码]((https://github.com/removeif/hexo-theme-icarus-removeif/blob/master/themes/icarus/source/js/friend.js))有所简化）：
+在`source/js`目录下新建`friends.js`文件，内容如下（较[原代码](https://github.com/removeif/hexo-theme-icarus-removeif/blob/master/themes/icarus/source/js/friend.js)有所简化）：
 ```javascript 点击展开 >folded
 // author by removef
 // https://removeif.github.io/
