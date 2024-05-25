@@ -2,7 +2,7 @@
 title: numpy实现softmax回归
 toc: true
 date: 2024-05-06 22:20:05
-updated: 2024-05-19 17:15:00
+updated: 2024-05-25 22:25:00
 cover:
 thumbnail:
 categories:
@@ -51,7 +51,7 @@ def gradient(x, y, y_hat):
 
 ### 小批量梯度下降法
 
-```python 代码较长 >folded
+```python 点击展开 >folded
 def batch_gradient_descent(
     x: np.ndarray, 
     y: np.ndarray, 
@@ -95,7 +95,7 @@ def batch_gradient_descent(
 
 ### 数据处理
 - 随机选取95%的数据作训练集，剩余5%作测试集
-- 特征向量中每个元素取值为-128到127，将其归一化到0-1
+- 特征向量中每个元素取值为-128到127，将其归一化到0-1（避免取指数时溢出）
 - 标签为0-9的整数，将其转化为独热编码
 
 ```python
@@ -313,3 +313,69 @@ for _ in range(epochs):
 ```
 其中有三个超参数可以调整：学习率 `learning_rate`、迭代次数 `epochs` 和批量大小 `batch_size`。
 有形状分别为 `(784, 10)` 和 `(10,)` 的可学习参数 $W$ 和 $b$，所以这是一个拥有 $0.00000785 B$ 参数的“大”模型。
+
+
+
+## Pytorch实现
+
+```python 点击展开 >folded
+import torch
+import torch.nn as nn
+import torch.optim as optim
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+
+# 加载数据集
+data = pd.read_csv(r'your\path\to\train.csv')
+X = data.iloc[:, 1:].values
+y = data.iloc[:, 0].values
+
+scaler = StandardScaler()
+X = scaler.fit_transform(X)
+
+# 划分训练集和测试集
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# 转换为Tensor数据类型
+X_train = torch.Tensor(X_train)
+y_train = torch.LongTensor(y_train)
+X_test = torch.Tensor(X_test)
+y_test = torch.LongTensor(y_test)
+
+# 设置超参数
+learning_rate = 0.001
+batch_size = 64
+num_epochs = 10
+
+# 加载数据到DataLoader
+train_dataset = torch.utils.data.TensorDataset(X_train, y_train)
+train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+
+# 初始化模型、损失函数和优化器
+model = nn.Linear(28 * 28, 10)
+criterion = nn.CrossEntropyLoss()
+optimizer = optim.SGD(model.parameters(), lr=learning_rate)
+
+# 训练模型
+for epoch in range(num_epochs):
+    for _, (images, labels) in enumerate(train_loader):
+        optimizer.zero_grad()
+        outputs = model(images)
+        loss = criterion(outputs, labels)
+        loss.backward()
+        optimizer.step()
+    print (f'Epoch [{epoch+1}/{num_epochs}], Loss: {loss.item():.4f}')
+
+# 模型评估
+model.eval()
+with torch.no_grad():
+    outputs = model(X_test)
+    _, predicted = torch.max(outputs, 1)
+    correct = (predicted == y_test).sum().item()
+    total = y_test.size(0)
+    print(f'Accuracy: {100 * correct / total:.6f} %')
+```
+这一框架与之前的实现主要有两点区别：
+1. 数据处理时，使用`StandardScaler`对特征进行标准化，实际就是减去均值再除以标准差，使得特征的均值为0，方差为1
+2. 训练时，使用`SGD`优化器，即随机梯度下降（stochastic gradient descent）
