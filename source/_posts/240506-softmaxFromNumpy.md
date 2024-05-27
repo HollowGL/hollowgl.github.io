@@ -2,7 +2,7 @@
 title: numpy实现softmax回归
 toc: true
 date: 2024-05-06 22:20:05
-updated: 2024-05-25 22:25:00
+updated: 2024-05-27 23:30:00
 cover:
 thumbnail:
 categories:
@@ -15,7 +15,7 @@ tags: Python
 
 花了点时间仔细推导了公式，实现一个简单的softmax回归模型，用于手写数字识别。该模型是一个单层神经网络，通过梯度下降法不断迭代更新参数，使得损失函数最小化。
 
-也就单层神经网络可以手动计算梯度，多层神经网络不得不借助自动微分工具。如若用上Pytorch等高级框架的话，整个模型几行代码就可实现。
+也就单层神经网络可以手动计算梯度，多层神经网络需借助自动微分工具。如若用上Pytorch等高级框架的话，很多函数都有直接调用的现成实现，可以很方便地设计出更复杂的神经架构。
 
 参考链接
 - [动手学深度学习：3.4. Softmax回归](https://zh-v2.d2l.ai/chapter_linear-networks/softmax-regression.html)
@@ -77,8 +77,8 @@ def batch_gradient_descent(
         for x_batch, y_batch in get_batch(batch_size):
             y_hat = net(x_batch, w, b)
             w_grad, b_grad = gradient(x_batch, y_batch, y_hat)
-            w -= (1 / x_batch.shape[0]) * learning_rate * w_grad
-            b -= (1 / x_batch.shape[0]) * learning_rate * b_grad
+            w -= (1 / batch_size) * learning_rate * w_grad
+            b -= (1 / batch_size) * learning_rate * b_grad
             loss_epoch += loss(y_batch, y_hat)
         loss_lst.append(loss_epoch / batch_size)
 
@@ -95,7 +95,7 @@ def batch_gradient_descent(
 
 ### 数据处理
 - 随机选取95%的数据作训练集，剩余5%作测试集
-- 特征向量中每个元素取值为-128到127，将其归一化到0-1（避免取指数时溢出）
+- 特征向量中每个元素取值为0到255，将其归一化为0到1（避免取指数时溢出）
 - 标签为0-9的整数，将其转化为独热编码
 
 ```python
@@ -107,8 +107,8 @@ test_data = mnist_data.drop(train_data.index)
 train_X = train_data.drop('label', axis=1).to_numpy(dtype=np.float32)
 test_X = test_data.drop('label', axis=1).to_numpy(dtype=np.float32)
 # normalize
-train_X = (train_X + 128) / 255.0
-test_X = (test_X + 128) / 255.0
+train_X = train_X / 255.0
+test_X = test_X / 255.0
 
 train_y = train_data['label'].to_numpy()
 test_Y = test_data['label'].to_numpy()
@@ -129,7 +129,7 @@ accuracy = np.mean(y_pred == y_true)
 print(f"Accuracy: {accuracy:.6f}")
 ```
 
-训练耗时2s，超参没有细调，最终准确率在**0.86**左右
+训练耗时2s，超参没有细调，最终准确率在**0.89**左右
 
 <div align="center">
 <a href="https://imgse.com/i/pkZa8zD"><img src="https://s21.ax1x.com/2024/05/10/pkZa8zD.png" alt="pkZa8zD.png" style="zoom:70%"/></a>
@@ -154,10 +154,12 @@ $$
 
 独热编码将标签转化为一个长度为 $q$ 的向量 $y \in \mathbb{R}^q$，其中只有一个元素为1，其他元素为0，值为1元素的索引就是原标签的值。于是，给定一个样本 $x$，其标签 $y$ 的概率分布可以表示为
 $$
-P(y | x) = \prod_{i=1}^q p_j y_j
+P(y | x) = \sum_{i=1}^q p_j y_j = \vec{p} \cdot \vec{y}
 $$
 
-代码中，通过左乘单位矩阵 `np.eye(q)` 实现独热编码
+（后续公式中 $\vec{p} \cdot \vec{y}$ 直接用 $py$ 表示，省略点乘和向量符号）
+
+代码中，通过对 `np.eye(q)` 进行索引实现独热编码
 ```python
 # convert to one-hot encoding
 train_y = np.eye(10)[train_y]
@@ -206,8 +208,8 @@ $$
 $$
 \begin{split} 
     \log P(Y|X) &= \sum_{i=1}^n \log P(y^{(i)} | x^{(i)}) \\
-    &= \sum_{i=1}^n \log \prod_{j=1}^q p_j{y_j^{(i)}} \\
-    &= \sum_{i=1}^n y^{(i)} \log p^{(i)} \\
+    &= \sum_{i=1}^n \log \sum_{j=1}^q p_j^{(i)}{y_j^{(i)}} \\
+    &= \sum_{i=1}^n y^{(i)}\log p^{(i)} \\
     &\triangleq - \sum_{i=1}^n l^{(i)}(y, p) 
 \end{split} 
 $$
@@ -359,7 +361,7 @@ optimizer = optim.SGD(model.parameters(), lr=learning_rate)
 
 # 训练模型
 for epoch in range(num_epochs):
-    for _, (images, labels) in enumerate(train_loader):
+    for images, labels in train_loader:
         optimizer.zero_grad()
         outputs = model(images)
         loss = criterion(outputs, labels)
@@ -374,7 +376,7 @@ with torch.no_grad():
     _, predicted = torch.max(outputs, 1)
     correct = (predicted == y_test).sum().item()
     total = y_test.size(0)
-    print(f'Accuracy: {100 * correct / total:.6f} %')
+    print(f'Accuracy: {correct / total:.6f}')
 ```
 这一框架与之前的实现主要有两点区别：
 1. 数据处理时，使用`StandardScaler`对特征进行标准化，实际就是减去均值再除以标准差，使得特征的均值为0，方差为1
