@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>HollowGL的个人空间</title>
+  <icon>https://hollowgl.github.io/icon.png</icon>
+  
+  <link href="https://hollowgl.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://hollowgl.github.io/"/>
+  <updated>2024-05-19T14:34:42.000Z</updated>
+  <id>https://hollowgl.github.io/</id>
+  
+  <author>
+    <name>HollowGL</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Edge禁用Adobe Acrobat作为PDF阅读器</title>
+    <link href="https://hollowgl.github.io/2024/05/19/240519-EdgePdfReader/"/>
+    <id>https://hollowgl.github.io/2024/05/19/240519-EdgePdfReader/</id>
+    <published>2024-05-19T14:34:42.000Z</published>
+    <updated>2024-05-19T14:34:42.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;参考链接：&lt;a href=&quot;https://www.askvg.com/enable-or-disable-adobe-acrobat-pdf-reader-in-microsoft-edge/&quot;&gt;[Tip] How to Restore Classic Native PDF Viewer in Microsoft Edge&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Edge地址栏输入&lt;code&gt;edge://flags/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;搜索 &lt;code&gt;new PDF&lt;/code&gt;，找到&lt;code&gt;New PDF Viewer&lt;/code&gt;一项，将选项置为&lt;strong&gt;Disabled&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;重启Edge即可生效&lt;/li&gt;
+&lt;/ol&gt;</summary>
+    
+    
+    
+    <category term="代码以外的Bug" scheme="https://hollowgl.github.io/categories/%E4%BB%A3%E7%A0%81%E4%BB%A5%E5%A4%96%E7%9A%84Bug/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>numpy实现softmax回归</title>
+    <link href="https://hollowgl.github.io/2024/05/06/240506-softmaxFromNumpy/"/>
+    <id>https://hollowgl.github.io/2024/05/06/240506-softmaxFromNumpy/</id>
+    <published>2024-05-06T14:20:05.000Z</published>
+    <updated>2024-05-27T15:30:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;从&lt;strong&gt;线性代数&lt;/strong&gt;到&lt;strong&gt;概率论与数理统计&lt;/strong&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="Python" scheme="https://hollowgl.github.io/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>友链页面的实现</title>
+    <link href="https://hollowgl.github.io/2024/05/05/240505-friends/"/>
+    <id>https://hollowgl.github.io/2024/05/05/240505-friends/</id>
+    <published>2024-05-05T12:45:27.000Z</published>
+    <updated>2024-05-05T12:45:27.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;一个好友也建了&lt;a href=&quot;https://maksymilan.github.io/&quot;&gt;博客&lt;/a&gt;，特此创建友链以示支持&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="建站历程" scheme="https://hollowgl.github.io/categories/%E5%BB%BA%E7%AB%99%E5%8E%86%E7%A8%8B/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>typing在3.9中的变化</title>
+    <link href="https://hollowgl.github.io/2024/04/14/python-typing/"/>
+    <id>https://hollowgl.github.io/2024/04/14/python-typing/</id>
+    <published>2024-04-13T16:00:38.000Z</published>
+    <updated>2024-04-13T16:00:38.000Z</updated>
+    
+    
+    <summary type="html">Python3.9支持直接使用tuple, list等进行类型注解</summary>
+    
+    
+    
+    
+    <category term="Python" scheme="https://hollowgl.github.io/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>碎碎念(纸条)模块实现</title>
+    <link href="https://hollowgl.github.io/2023/10/07/self-talking/"/>
+    <id>https://hollowgl.github.io/2023/10/07/self-talking/</id>
+    <published>2023-10-07T14:01:11.000Z</published>
+    <updated>2023-10-07T14:01:11.000Z</updated>
+    
+    
+    <summary type="html">记录了自己模块化实现碎碎念功能的一些坑。</summary>
+    
+    
+    
+    <category term="建站历程" scheme="https://hollowgl.github.io/categories/%E5%BB%BA%E7%AB%99%E5%8E%86%E7%A8%8B/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>csapp实验一datalab</title>
+    <link href="https://hollowgl.github.io/2023/09/29/csapp-1-datalab/"/>
+    <id>https://hollowgl.github.io/2023/09/29/csapp-1-datalab/</id>
+    <published>2023-09-29T14:33:03.000Z</published>
+    <updated>2023-09-29T14:33:03.000Z</updated>
+    
+    
+    <summary type="html">&lt;style type=&quot;text/css&quot;&gt;
+    .heimu { color: #888f96; background-color: #888f96; }
+    .heimu:hover { color: #fff; }
+&lt;/style&gt;
+
+
+
+&lt;p&gt;一些感想，留作纪念。&lt;del&gt;后续可能会给出分析&lt;/del&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="csapp" scheme="https://hollowgl.github.io/categories/csapp/"/>
+    
+    
+    <category term="C" scheme="https://hollowgl.github.io/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>docker配置csapp环境</title>
+    <link href="https://hollowgl.github.io/2023/09/19/csapp-env/"/>
+    <id>https://hollowgl.github.io/2023/09/19/csapp-env/</id>
+    <published>2023-09-19T13:33:47.000Z</published>
+    <updated>2023-09-19T13:33:47.000Z</updated>
+    
+    
+    <summary type="html">描述了如何使用docker在mac上配置csapp实验环境</summary>
+    
+    
+    
+    <category term="csapp" scheme="https://hollowgl.github.io/categories/csapp/"/>
+    
+    
+    <category term="C" scheme="https://hollowgl.github.io/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>博客的迁移</title>
+    <link href="https://hollowgl.github.io/2023/09/12/rebuild-blog/"/>
+    <id>https://hollowgl.github.io/2023/09/12/rebuild-blog/</id>
+    <published>2023-09-12T10:56:37.000Z</published>
+    <updated>2023-09-12T10:56:37.000Z</updated>
+    
+    
+    <summary type="html">这篇文章简要的记录了迁移博客的方法。</summary>
+    
+    
+    
+    <category term="建站历程" scheme="https://hollowgl.github.io/categories/%E5%BB%BA%E7%AB%99%E5%8E%86%E7%A8%8B/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>selenium笔记</title>
+    <link href="https://hollowgl.github.io/2023/08/09/selenium%E7%AC%94%E8%AE%B0/"/>
+    <id>https://hollowgl.github.io/2023/08/09/selenium%E7%AC%94%E8%AE%B0/</id>
+    <published>2023-08-09T10:48:13.000Z</published>
+    <updated>2023-08-09T10:48:13.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;去年学习selenium模块时做的的笔记，当时看完&lt;a href=&quot;https://www.byhy.net/tut/auto/selenium/01/&quot;&gt;网上教程&lt;/a&gt;后写了一个简单的项目。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="笔记" scheme="https://hollowgl.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="Python" scheme="https://hollowgl.github.io/tags/Python/"/>
+    
+    <category term="Selenium" scheme="https://hollowgl.github.io/tags/Selenium/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>回溯法求解数独</title>
+    <link href="https://hollowgl.github.io/2023/08/08/backtracking-sudoku/"/>
+    <id>https://hollowgl.github.io/2023/08/08/backtracking-sudoku/</id>
+    <published>2023-08-08T08:30:00.000Z</published>
+    <updated>2023-09-25T05:00:00.000Z</updated>
+    
+    
+    <summary type="html">暑假时解决的有关课程作业的问题，推迟到开学才发表</summary>
+    
+    
+    
+    <category term="算法" scheme="https://hollowgl.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="回溯法" scheme="https://hollowgl.github.io/tags/%E5%9B%9E%E6%BA%AF%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello world!</title>
+    <link href="https://hollowgl.github.io/2023/07/20/hello-world/"/>
+    <id>https://hollowgl.github.io/2023/07/20/hello-world/</id>
+    <published>2023-07-20T15:34:56.578Z</published>
+    <updated>2023-07-23T06:30:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;花了数个小时，终于建立起了&lt;strong&gt;专属于我的个人网站&lt;/strong&gt;。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="建站历程" scheme="https://hollowgl.github.io/categories/%E5%BB%BA%E7%AB%99%E5%8E%86%E7%A8%8B/"/>
+    
+    
+  </entry>
+  
+</feed>
