@@ -6,7 +6,7 @@
   <link href="https://hollowgl.github.io/atom.xml" rel="self"/>
   
   <link href="https://hollowgl.github.io/"/>
-  <updated>2024-05-19T14:34:42.000Z</updated>
+  <updated>2024-09-18T13:00:00.000Z</updated>
   <id>https://hollowgl.github.io/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CSAPP实验二Bomb</title>
+    <link href="https://hollowgl.github.io/2024/09/18/240918-bombLab/"/>
+    <id>https://hollowgl.github.io/2024/09/18/240918-bombLab/</id>
+    <published>2024-09-18T13:00:00.000Z</published>
+    <updated>2024-09-18T13:00:00.000Z</updated>
+    
+    
+    <summary type="html">耐炸王</summary>
+    
+    
+    
+    <category term="csapp" scheme="https://hollowgl.github.io/categories/csapp/"/>
+    
+    
+    <category term="C" scheme="https://hollowgl.github.io/tags/C/"/>
+    
+  </entry>
   
   <entry>
     <title>Edge禁用Adobe Acrobat作为PDF阅读器</title>
